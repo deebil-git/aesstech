@@ -153,7 +153,7 @@ if($_POST["submit"]) {
 
           <div class="col-md-12 col-lg-8 mb-5" id="getquote">
 
-            <form action="contact.php" class="p-5 bg-white">
+            <form class="p-5 bg-white" method="post">
 
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
@@ -206,7 +206,7 @@ if($_POST["submit"]) {
 
               <div class="row form-group">
                 <div class="col-md-12">
-                  <input type="submit" name="submit" value="Send" class="btn btn-primary">
+                  <input type="submit" name="submit" class="btn btn-primary">
                 </div>
               </div>
             </form>
@@ -345,3 +345,51 @@ if($_POST["submit"]) {
 
   </body>
 </html>
+
+<?php
+              
+if(isset($_POST['submit']))
+{
+$fullname=$_POST['fullname'];  
+$email=$_POST['email'];
+$contactnumber=$_POST['contactnumber'];
+$whatsappnumber =$_POST['whatsappnumber'];
+$district =$_POST['district'];
+$location =$_POST['location'];
+$pincode =$_POST['pincode'];
+$message=$_POST['message'];
+
+date_default_timezone_set('Asia/Kolkata');
+$date= date('l jS \of F Y h:i:s A');
+
+$formdata = 	"\r\n" ."\r\n" ."\r\n" ."\r\n" ."\r\n" ."\r\n" .
+		'Timestamp		: ' . $date. "\r\n" . 
+		'Full Name		: ' . $fullname . "\r\n" . 
+		'Email			: ' . $email. "\r\n" . 
+		'Contact Number		: ' . $contactnumber . "\r\n" . 
+		'Whatsapp Number		: ' . $whatsappnumber. "\r\n" . 
+		'District		: ' . $district . "\r\n" . 
+		'Location 		: ' . $location  . "\r\n" . 
+		'Pincode 		: ' . $pincode . "\r\n" . 
+		'Message			: ' . $message. "\r\n";
+		
+$mailbody= 	'Timestamp: ' . $date. "\r\n" . 
+		'Full Name: ' . $fullname . "\r\n" . 
+		'Email	: ' . $email. "\r\n" . 
+		'Contact Number: ' . $contactnumber . "\r\n" . 
+		'Whatsapp Number: ' . $whatsappnumber. "\r\n" . 
+		'District: ' . $district . "\r\n" . 
+		'Location: ' . $location  . "\r\n" . 
+		'Pincode: ' . $pincode . "\r\n" . 
+		"\r\n".
+		'<Message>' . "\r\n\r\n". $message;
+		
+mail("mohamednayif@gmail.com","Form Submission",$mailbody,$email);
+
+$fp = fopen('data.txt', 'a');
+fwrite($fp, $formdata);
+fclose($fp);
+
+
+}
+?>
