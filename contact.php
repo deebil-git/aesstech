@@ -384,7 +384,7 @@ $mailbody= 	'Timestamp: ' . $date. "\r\n" .
 		"\r\n".
 		'<Message>' . "\r\n\r\n". $message;
 		
-mail("mohamednayif@gmail.com","Form Submission",$mailbody,$email);
+mail("info@aesstech.com","Form Submission",$mailbody,$email);
 
 $fp = fopen('data.txt', 'a');
 fwrite($fp, $formdata);
