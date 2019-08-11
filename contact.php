@@ -1,3 +1,4 @@
+<!--
 <?php
 
 if($_POST["submit"]) {
@@ -19,6 +20,7 @@ if($_POST["submit"]) {
 }
 
 ?>
+-->
 
 <!DOCTYPE html>
 <html lang="en">
